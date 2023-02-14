@@ -6,6 +6,7 @@ public class Gaulois {
 	private int effetPotion = 1;
 	
 	public Gaulois(String nom, int force) {
+		super();
 		this.nom = nom;
 		this.force = force;
 	}
@@ -17,8 +18,6 @@ public class Gaulois {
 	private String prendreParole() {
 		return "Le gaulois " + nom + " : ";
 	}
-	
-	
 	
 	public String getNom() {
 		return nom;
