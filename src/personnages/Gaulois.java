@@ -3,11 +3,26 @@ package personnages;
 public class Gaulois {
 	private String nom;
 	private int force;
-	private int effetPotion = 1;
+	private int effetPotion = 0;
 	
 	public Gaulois(String nom, int force) {
-		super();
 		this.nom = nom;
+		this.force = force;
+	}
+	
+	public String getNom() {
+		return nom;
+	}
+	
+	public int getForce() {
+		return force;
+	}
+
+	public int getEffetPotion() {
+		return effetPotion;
+	}
+
+	public void setForce(int force) {
 		this.force = force;
 	}
 	
@@ -19,28 +34,27 @@ public class Gaulois {
 		return "Le gaulois " + nom + " : ";
 	}
 	
-	public String getNom() {
-		return nom;
-	}
-
-	public int getForce() {
-		return force;
-	}
-
-	public void setForce(int force) {
-		this.force = force;
-	}
-
-	public int getEffetPotion() {
-		return effetPotion;
+	public void frapper(Romain romain) {
+		System.out.println(nom + " envoie un grand coup dans la machoire de "
+				+ romain.getNom());
+		romain.recevoirCoup(force / 3);
 	}
 
 	@Override
 	public String toString() {
-		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
+		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" 
+				+ effetPotion + "]";
 	}
 	
 	public static void main(String[] args) {
-		
+		Gaulois asterix = new Gaulois("Astérix", 8);
+		System.out.println(asterix);
+//		
+  		//tests méthodes
+//		Romain brutus = new Romain("Brutus", 10);
+//		asterix.parler("salut la team !");
+//		System.out.println(brutus.getForce());
+//		asterix.frapper(brutus);
+//		System.out.println(brutus.getForce());
 	}
 }
