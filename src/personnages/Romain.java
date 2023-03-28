@@ -3,6 +3,8 @@ package personnages;
 public class Romain {
 	private String nom;
 	private int force;
+	private Equipement equipement[];
+	private int nbEquipement=0;
 	
 	public Romain(String nom, int force) {
 		assert force > 0;
@@ -38,6 +40,31 @@ public class Romain {
 		assert force < temp;
 	}
 	
+	private void ajouterEquip(Equipement equip) {
+		System.out.println(" s'équipe avec un " + equip + ".");
+		equipement[nbEquipement]=equip;
+		nbEquipement++;
+	}
+	
+	public void sEquiper(Equipement equip) {
+		System.out.println("Le soldat " + getNom());
+		switch(nbEquipement) {
+		case 2:
+			System.out.println(" est déjà bien protégé.");
+			break;
+		case 1:
+			if(equipement[0] == equip) {
+				System.out.println(" possède déjà un " + equip + ".");
+			} else {
+				ajouterEquip(equip);
+			}
+			break;
+		case 0: 
+			ajouterEquip(equip);
+			break;
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "Romain [nom=" + nom + ", force=" + force + "]";
@@ -46,11 +73,15 @@ public class Romain {
 	public static void main(String[] args) {
 		Romain brutus = new Romain("Brutus", 6);
 		System.out.println(brutus);
+		brutus.sEquiper(Equipement.CASQUE);
+		brutus.sEquiper(Equipement.CASQUE);
+		brutus.sEquiper(Equipement.BOUCLIER);
+		brutus.sEquiper(Equipement.CASQUE);
 		
 		//tests méthodes
-		brutus.parler("Salut la team !");
-		System.out.println(brutus.getForce());
-		brutus.recevoirCoup(2);
-		System.out.println(brutus.getForce());
+//		brutus.parler("Salut la team !");
+//		System.out.println(brutus.getForce());
+//		brutus.recevoirCoup(2);
+//		System.out.println(brutus.getForce());
 	}
 }
