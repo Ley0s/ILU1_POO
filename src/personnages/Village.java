@@ -45,12 +45,5 @@ public class Village {
 		Gaulois obelix = new Gaulois("Obélix", 25);
 		village.ajouterHabitant(obelix);
 		village.afficherVillageois();
-		
-//		Gaulois gaulois = village.trouverHabitant(1);
-//		System.out.println(gaulois);
-//		Ces lignes affichent null car l'habitant d'indice 1 est le deuxième habitant, or il n'y a que Astérix dans le village.
-//		Gaulois gaulois = villageDesIrréductibles.trouverHabitant(30);
-//		Cette ligne donne une erreur car l'indice max est 29 et non 30.
-		
 	}
 }

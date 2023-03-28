@@ -5,7 +5,7 @@ public class Romain {
 	private int force;
 	
 	public Romain(String nom, int force) {
-		super();
+		assert force > 0;
 		this.nom = nom;
 		this.force = force;
 	}
@@ -27,12 +27,15 @@ public class Romain {
 	}
 	
 	public void recevoirCoup(int forceCoup) {
+		assert force >= 0;
+		int temp = force;
 		force -= forceCoup;
 		if (force > 0) {
 			parler("Aïe");
 		} else {
 			parler("J'abandonne...");
 		}
+		assert force < temp;
 	}
 	
 	@Override
@@ -41,13 +44,13 @@ public class Romain {
 	}
 	
 	public static void main(String[] args) {
-		Romain brutus = new Romain("Brutus", 10);
+		Romain brutus = new Romain("Brutus", 6);
 		System.out.println(brutus);
 		
 		//tests méthodes
-//		brutus.parler("Salut la team !");
-//		System.out.println(brutus.getForce());
-//		brutus.recevoirCoup(2);
-//		System.out.println(brutus.getForce());
+		brutus.parler("Salut la team !");
+		System.out.println(brutus.getForce());
+		brutus.recevoirCoup(2);
+		System.out.println(brutus.getForce());
 	}
 }
