@@ -3,7 +3,7 @@ package personnages;
 public class Romain {
 	private String nom;
 	private int force;
-	private Equipement equipement[];
+	private Equipement[] equipement;
 	private int nbEquipement=0;
 	
 	public Romain(String nom, int force) {
@@ -21,7 +21,7 @@ public class Romain {
 	}
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + " »");
+		System.out.println(prendreParole() + "ï¿½ " + texte + " ï¿½");
 	}
 
 	private String prendreParole() {
@@ -33,7 +33,7 @@ public class Romain {
 		int temp = force;
 		force -= forceCoup;
 		if (force > 0) {
-			parler("Aïe");
+			parler("AÃ¯e");
 		} else {
 			parler("J'abandonne...");
 		}
@@ -41,27 +41,27 @@ public class Romain {
 	}
 	
 	private void ajouterEquip(Equipement equip) {
-		System.out.println(" s'équipe avec un " + equip + ".");
 		equipement[nbEquipement]=equip;
 		nbEquipement++;
 	}
 	
 	public void sEquiper(Equipement equip) {
-		System.out.println("Le soldat " + getNom());
 		switch(nbEquipement) {
-		case 2:
-			System.out.println(" est déjà bien protégé.");
-			break;
-		case 1:
-			if(equipement[0] == equip) {
-				System.out.println(" possède déjà un " + equip + ".");
-			} else {
+			case 1:
+				if(equipement[0] == equip) {
+					System.out.println("Le soldat " + getNom() + " possÃ¨de dÃ©jÃ  un " + equip + ".");
+				} else {
+					System.out.println("Le soldat " + getNom() + " s'Ã©quipe avec un " + equip + ".");
+					ajouterEquip(equip);
+				}
+				break;
+			case 0: 
+				System.out.println("Le soldat " + getNom() + " s'Ã©quipe avec un " + equip + ".");
 				ajouterEquip(equip);
-			}
-			break;
-		case 0: 
-			ajouterEquip(equip);
-			break;
+				break;
+			default:
+				System.out.println("Le soldat " + getNom() + " est dÃ©jÃ  bien protÃ©gÃ©.");
+				break;
 		}
 	}
 	
@@ -73,12 +73,17 @@ public class Romain {
 	public static void main(String[] args) {
 		Romain brutus = new Romain("Brutus", 6);
 		System.out.println(brutus);
+		System.out.println(brutus.nbEquipement);
 		brutus.sEquiper(Equipement.CASQUE);
+		System.out.println(brutus.nbEquipement);
 		brutus.sEquiper(Equipement.CASQUE);
+		System.out.println(brutus.nbEquipement);
 		brutus.sEquiper(Equipement.BOUCLIER);
+		System.out.println(brutus.nbEquipement);
 		brutus.sEquiper(Equipement.CASQUE);
+		System.out.println(brutus.nbEquipement);
 		
-		//tests méthodes
+		//tests mï¿½thodes
 //		brutus.parler("Salut la team !");
 //		System.out.println(brutus.getForce());
 //		brutus.recevoirCoup(2);
